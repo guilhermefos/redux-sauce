@@ -27,9 +27,12 @@ const TodoList = () => {
     [dispatch]
   );
 
-  const handleRemove = useCallback((id) => {
-    dispatch(TodoActions.removeTodo(id));
-  }, []);
+  const handleRemove = useCallback(
+    (id) => {
+      dispatch(TodoActions.removeTodo(id));
+    },
+    [dispatch]
+  );
 
   return (
     <section>
