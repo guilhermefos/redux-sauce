@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, removeTodo, toggleTodo } from './store/actions/todos';
+import { Creators as TodoActions } from './store/ducks/todos';
 
 const TodoList = () => {
   const inputRef = useRef();
@@ -13,7 +13,7 @@ const TodoList = () => {
     (e) => {
       e.preventDefault();
 
-      dispatch(addTodo(inputRef.current.value));
+      dispatch(TodoActions.addTodo(inputRef.current.value));
 
       inputRef.current.value = '';
     },
@@ -22,13 +22,13 @@ const TodoList = () => {
 
   const handleToogle = useCallback(
     (id) => {
-      dispatch(toggleTodo(id));
+      dispatch(TodoActions.toggleTodo(id));
     },
     [dispatch]
   );
 
   const handleRemove = useCallback((id) => {
-    dispatch(removeTodo(id));
+    dispatch(TodoActions.removeTodo(id));
   }, []);
 
   return (
